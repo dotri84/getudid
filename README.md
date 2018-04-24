@@ -48,8 +48,10 @@ This method uses Over-the-Air Profile Delivery Concepts (https://developer.apple
 Create SSL certificate (Suggest: https://www.sslforfree.com/) . We have 3 files. (ca_bundle.crt, private.key, certificate.crt).
 Use those files to sign above .mobileconfig with this command:
 ```
-openssl smime -sign -in unsigned.mobileconfig -out signed.mobileconfig -signer mbaike.crt -inkey mbaikenopass.key -certfile ca-bundle.pem -outform der -nodetach
+sudo openssl smime -sign -in TH4.mobileconfig -out TH4s.mobileconfig -signer certificate.crt -inkey private.key -certfile ca_bundle.crt -outform der -nodetach
 ```
+
+Prefix "**sudo**" is to prevent error "unable to write 'random state'"
 
 ## PHP Server
 PHP code to read string sent from device to server
